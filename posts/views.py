@@ -41,6 +41,10 @@ def update_post(request, post_id):
             "form":form
         })
     
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.delete()
+    return redirect(index)
 
 def about_us(request):
     return render(request, "profile.template.html", {

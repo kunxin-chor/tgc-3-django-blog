@@ -7,11 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="add_post">Add a new Post</a>
     {% for p in posts %}
     <div>
         <h1>{{p.title}}</h1>
         <p>{{p.content}}</p>
-        <a href="edit_post/{{p.id}}">Edit</a>
+        <a href="edit_post/{{p.id}}">Edit</a> | <a href="delete_post/{{p.id}}">Delete</a>
         <hr/>
     </div>
     {%endfor%}
