@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from .models import Post
 from .forms import PostForm
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 
 # Create your views here.
 def index(request):
@@ -22,6 +22,25 @@ def create_post(request):
         return render(request, "post_form.template.html", {
             "form":form
         })
+        
+def update_post(request, post_id):
+
+    # find a Post object by post_id as the primary key
+    post = get_object_or_404(Post, pk=post_id)
+    
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect(index)
+    else:
+
+        # create a form to show the Post object in
+        form = PostForm(instance=post)
+        return render(request, "edit_post_form.template.html",{
+            "form":form
+        })
+    
 
 def about_us(request):
     return render(request, "profile.template.html", {
