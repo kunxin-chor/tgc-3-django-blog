@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>Thank you, you have indicated to donate ${{amount_in_dollars}}</p>
+    <form method="POST">
+      {% csrf_token %}
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="{{ publishable_key }}"
+              data-description="Donation to a questionable blog"
+              data-amount="{{amount}}"
+              data-locale="auto"></script>
+      <input type='hidden' name='amount' value='{{amount}}'/>
+    </form>
+</body>
+</html>
