@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'storages',
     # 'annoying',
+=======
+>>>>>>> simple-stripe
     'posts',
     'donate'
 ]
@@ -125,6 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+<<<<<<< HEAD
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
@@ -149,3 +153,4 @@ STATICFILES_LOCATION="static"
 DEFAULT_FILE_STORAGE='custom_storages.MediaStorage'
 
 MEDIAFILES_LOCATION="media"
+
