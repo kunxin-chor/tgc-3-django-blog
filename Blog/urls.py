@@ -14,15 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-<<<<<<< HEAD
+from django.urls import path, include
+# from posts.views import index, about_us, create_post, update_post, delete_post
 from django.urls import path
 from posts.views import index, about_us, create_post, update_post, delete_post, update_post_ajax
 from posts.api import all_posts
 import posts
-=======
-from django.urls import path, include
-from posts.views import index, about_us, create_post, update_post, delete_post
->>>>>>> simple-stripe
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,7 +28,7 @@ urlpatterns = [
     path('add_post', create_post),
     path('edit_post/<post_id>', update_post),
     path('delete_post/<post_id>', delete_post),
-    path('donate/', include('donate.urls'))
+    path('donate/', include('donate.urls')),
     path('edit_post_ajax/<post_id>', update_post_ajax),
     path('api/posts', all_posts),
     path('api/update_post/<id>', posts.api.update_post)
