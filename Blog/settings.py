@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'annoying',
+    'storages',
+    # 'annoying',
     'posts',
     'donate'
 ]
@@ -122,5 +123,27 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+
 STRIPE_PUBLISHABLE_KEY=os.environ["STRIPE_PUBLISHABLE_KEY"]
 STRIPE_SECRET_KEY=os.environ["STRIPE_SECRET_KEY"]
+
+AWS_S3_OBJECT_PARAMETERS={
+    'Expires':'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl':'max-age=946800'
+}
+
+AWS_STORAGE_BUCKET_NAME="kx-test-deploy"
+AWS_S3_REGION_NAME="ap-southeast-1"
+AWS_ACCESS_KEY_ID=os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY=os.environ["AWS_SECRET_ACCESS_KEY"]
+AWS_S3_CUSTOM_DOMAIN="{}.s3.amazonaws.com".format(AWS_STORAGE_BUCKET_NAME)
+
+STATICFILES_STORAGE="custom_storages.StaticStorage"
+
+STATICFILES_LOCATION="static"
+DEFAULT_FILE_STORAGE='custom_storages.MediaStorage'
+
+MEDIAFILES_LOCATION="media"
