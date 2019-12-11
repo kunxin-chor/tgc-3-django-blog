@@ -51,3 +51,11 @@ def about_us(request):
         'username':"Alan",
         'age':45
     })
+    
+def update_post_ajax(request, post_id):
+    # find a Post object by post_id as the primary key
+    post = get_object_or_404(Post, pk=post_id)
+    return render(request, 'edit_post_ajax.template.html',{
+        'post':post
+    })
+    

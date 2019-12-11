@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import index, about_us, create_post, update_post, delete_post
+from posts.views import index, about_us, create_post, update_post, delete_post, update_post_ajax
+from posts.api import all_posts
+import posts
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,5 +25,8 @@ urlpatterns = [
     path('profile', about_us),
     path('add_post', create_post),
     path('edit_post/<post_id>', update_post),
-    path('delete_post/<post_id>', delete_post)
+    path('edit_post_ajax/<post_id>', update_post_ajax),
+    path('delete_post/<post_id>', delete_post),
+    path('api/posts', all_posts),
+    path('api/update_post/<id>', posts.api.update_post)
 ]
